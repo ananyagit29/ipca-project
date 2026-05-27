@@ -5,7 +5,6 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // TODO: Clear authentication tokens later
     console.log('User logged out');
     navigate('/login');
   };

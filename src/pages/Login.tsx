@@ -5,15 +5,25 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    
-    // TODO: We will replace this with a real Spring Boot API call later
-    console.log('Logging in with:', { email, password });
-    
-    // Temporarily simulate a successful login by redirecting to the dashboard
-    navigate('/dashboard');
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        alert('Login successful!');
+        navigate('/dashboard');
+      } else {
+        alert('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Failed to connect to the server');
+    }
   };
 
   return (

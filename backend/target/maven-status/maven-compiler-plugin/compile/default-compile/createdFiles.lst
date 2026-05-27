@@ -1,0 +1,5 @@
+com\ipca\project\controller\AuthController.class
+com\ipca\project\ProjectApplication.class
+com\ipca\project\config\SecurityConfig.class
+com\ipca\project\repository\UserRepository.class
+com\ipca\project\model\User.class

@@ -7,14 +7,26 @@ const Signup: React.FC = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // TODO: We will replace this with a real Spring Boot API call later
-    console.log('Signing up with:', { name, email, password });
-    
-    // Temporarily simulate a successful signup by redirecting to login
-    navigate('/login');
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      if (response.ok) {
+        alert('Registration successful!');
+        navigate('/login');
+      } else {
+        const errorData = await response.text();
+        alert(errorData);
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert('Failed to connect to the server');
+    }
   };
 
   return (
