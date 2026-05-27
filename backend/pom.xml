@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version> <relativePath /> 
+        <version>3.3.5</version>
     </parent>
     <groupId>com.ipca</groupId>
     <artifactId>project</artifactId>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-community-dialects</artifactId>
-            <version>6.4.4.Final</version> </dependency>
+        </dependency>
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
