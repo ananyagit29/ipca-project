@@ -1,7 +1,8 @@
 For Backend :
 cd d:/Project/ipca-project/backend
 
-Running application using Maven :
+Running application using Maven : 
+cd backend
 mvn spring-boot:run
 
 For Frontend :

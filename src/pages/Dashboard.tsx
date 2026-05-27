@@ -10,13 +10,16 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '800px', margin: '50px auto', textAlign: 'center' }}>
-      <h2>Welcome to your Dashboard!</h2>
-      <p>You have successfully logged in.</p>
-      <button onClick={handleLogout} style={{ padding: '10px 20px', marginTop: '20px', cursor: 'pointer', backgroundColor: '#ff4d4f', color: 'white', border: 'none', borderRadius: '4px' }}>
+    <main className="dashboard-page">
+      <section className="dashboard-panel">
+        <p className="eyebrow">IPCA Project</p>
+        <h2>Welcome to your Dashboard!</h2>
+        <p>You have successfully logged in.</p>
+        <button className="danger-button" onClick={handleLogout}>
         Logout
-      </button>
-    </div>
+        </button>
+      </section>
+    </main>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ipcaLogo from '../assets/ipca_logo.png';
 
 const Signup: React.FC = () => {
   const [name, setName] = useState('');
@@ -30,40 +31,55 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}>
-      <h2>Create an Account</h2>
-      <form onSubmit={handleSignup} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        <input 
-          type="text" 
-          placeholder="Full Name" 
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          style={{ padding: '10px', fontSize: '16px' }}
-        />
-        <input 
-          type="email" 
-          placeholder="Email Address" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ padding: '10px', fontSize: '16px' }}
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ padding: '10px', fontSize: '16px' }}
-        />
-        <button type="submit" style={{ padding: '10px', fontSize: '16px', cursor: 'pointer' }}>
-          Sign Up
-        </button>
-      </form>
-      <p style={{ marginTop: '20px' }}>
-        Already have an account? <Link to="/login">Login here</Link>
-      </p>
+    <div className="auth-page">
+      <section className="auth-panel auth-panel--compact" aria-labelledby="signup-title">
+        <div className="brand-lockup">
+          <h1 id="signup-title">IPCA Project</h1>
+          <img className="brand-logo brand-logo--small" src={ipcaLogo} alt="IPCA Project logo" />
+          <p className="auth-kicker">Create your account to get started.</p>
+        </div>
+
+        <form className="auth-form" onSubmit={handleSignup}>
+          <label className="field">
+            <span>Full Name</span>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </label>
+          <label className="field">
+            <span>Email Address</span>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label className="field">
+            <span>Password</span>
+            <input
+              type="password"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <button className="primary-button" type="submit">
+            Sign Up
+          </button>
+        </form>
+
+        <p className="auth-link">
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
+        <p className="auth-footer">Developed by Ananya - 2026</p>
+      </section>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ipcaLogo from '../assets/ipca_logo.png';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -27,32 +28,45 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}>
-      <h2>Login to IPCA Project</h2>
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        <input 
-          type="email" 
-          placeholder="Email Address" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ padding: '10px', fontSize: '16px' }}
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ padding: '10px', fontSize: '16px' }}
-        />
-        <button type="submit" style={{ padding: '10px', fontSize: '16px', cursor: 'pointer' }}>
-          Login
-        </button>
-      </form>
-      <p style={{ marginTop: '20px' }}>
-        Don't have an account? <Link to="/signup">Sign up here</Link>
-      </p>
+    <div className="auth-page">
+      <section className="auth-panel" aria-labelledby="login-title">
+        <div className="brand-lockup">
+          <h1 id="login-title">IPCA Project</h1>
+          <img className="brand-logo" src={ipcaLogo} alt="IPCA Project logo" />
+          <p className="auth-kicker">Welcome User.</p>
+        </div>
+
+        <form className="auth-form" onSubmit={handleLogin}>
+          <label className="field">
+            <span>Email Address</span>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label className="field">
+            <span>Password</span>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <button className="primary-button" type="submit">
+            Login
+          </button>
+        </form>
+
+        <p className="auth-link">
+          New user? <Link to="/signup">Create an account</Link>
+        </p>
+        <p className="auth-footer">Developed by Ananya - 2026</p>
+      </section>
     </div>
   );
 };
